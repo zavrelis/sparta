@@ -384,7 +384,7 @@ similar_df["Similarity (%)"] = similar_df["Similarity (%)"] * 100
 
 
 def highlight_best(row):
-    player_name = row.iloc[0]  # první sloupec = Player
+    player_name = row.iloc[0]  
     if player_name == player_b:
         return ["background-color: rgba(214,39,40,0.15)"] * len(row)
     return [""] * len(row)
