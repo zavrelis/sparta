@@ -233,21 +233,17 @@ section_divider("2.5rem")
 # =================================================
 st.title("General Player Impact Score (GPIS)")
 st.markdown("""
-**GPIS** measures how much a player contributes to their team's overall performance.
-
-It is **not a rating or ranking**, but an impact metric combining:
+**GPIS** measures how much a player contributes to their team's overall performance in:
 - progression
 - attacking threat
 - creativity
 - defensive involvement
-
-The similarity system compares **playing styles**, not performance level.
 """)
 
 # =================================================
-# PLAYER SELECTION (PRIMARY)
+# PLAYER OVERVIEW
 # =================================================
-st.markdown("### Select player")
+st.subheader("Player Overview")
 
 col_sel, _ = st.columns([3, 7])
 with col_sel:
@@ -262,10 +258,6 @@ with col_sel:
 player = st.session_state.player_main
 player_row = df.loc[player]
 
-# =================================================
-# PLAYER OVERVIEW
-# =================================================
-st.subheader("Player Overview")
 
 gpis = player_row["GPIS"]
 percentile = df["GPIS"].rank(pct=True).loc[player] * 100
@@ -284,7 +276,7 @@ with col1:
         ">
             {gpis:.2f}
         </div>
-        <div style="margin-top:0.25rem; font-size:0.95rem;">
+        <div style="margin-top:0.25rem; font-size:1.2rem;">
             <b>{label}</b> · Percentile {percentile:.1f}
             <span style="color:#6c757d;">
                 (Top {100-percentile:.0f}%)
@@ -301,6 +293,8 @@ with col2:
 # =================================================
 # DISTRIBUTION
 # =================================================
+st.markdown("")
+st.markdown("")
 st.markdown("### League-wide GPIS distribution")
 st.caption("Sorted GPIS values with highlighted selected player.")
 
